@@ -97,9 +97,9 @@ module Gridion
               if formats[col]==:currency
                 value=number_to_currency(value) 
               elsif formats[col].kind_of?(Hash)
-                if formats[col].has_key?(:date)
-                  value=value.try(:to_date).try(:to_s, formats[col][:date])
-                elsif formats[col].has_key?(:date_format)
+                #if formats[col].has_key?(:date)
+                #  value=value.try(:to_date).try(:to_s, formats[col][:date])
+                if formats[col].has_key?(:date_format)
                   value = value.strftime(formats[col][:date_format])
                 end
               elsif formats[col].kind_of?(Proc)
