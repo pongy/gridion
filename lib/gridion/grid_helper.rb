@@ -99,6 +99,8 @@ module Gridion
               elsif formats[col].kind_of?(Hash)
                 if formats[col].has_key?(:date)
                   value=value.try(:to_date).try(:to_s, formats[col][:date])
+                elsif formats[col].has_key?(:date_format)
+                  value = value.strftime(formats[col][:date])
                 end
               elsif formats[col].kind_of?(Proc)
                 # use hook
